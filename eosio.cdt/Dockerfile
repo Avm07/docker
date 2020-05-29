@@ -7,8 +7,8 @@ ARG release=latest
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install openssl ca-certificates curl wget && rm -rf /var/lib/apt/lists/*
 
 # Install CDT from deb package
-ADD install_deb.sh /
-RUN /install_deb.sh $release && rm -f install_deb.sh
+RUN wget https://github.com/EOSIO/eosio.cdt/releases/download/v1.7.0/eosio.cdt_1.7.0-1-ubuntu-18.04_amd64.deb
+RUN apt install ./eosio.cdt_1.7.0-1-ubuntu-18.04_amd64.deb
 
 RUN apt-get update && apt-get -y install cmake g++ git
 
